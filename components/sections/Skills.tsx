@@ -88,7 +88,7 @@ const timelineData = [
 
 export default function SkillsSection() {
   return (
-    <section id="skills" className="relative w-full min-h-screen py-20 px-[clamp(16px,3vw,48px)] bg-[#121212] flex flex-col items-center overflow-visible">
+    <section id="skills" className="relative w-full min-h-[80vh] pt-20 pb-4 px-[clamp(16px,3vw,48px)] bg-[#121212] flex flex-col items-center overflow-visible">
       {/* Top Center Title */}
       <div className="w-full text-center mb-4 z-10">
         <h2 className="text-white font-extrabold uppercase" style={{ fontFamily: 'var(--font-heading)', fontSize: 'clamp(2rem, 5vw, 4rem)' }}>

@@ -31,7 +31,7 @@ export default function HeroSection() {
       <div className="w-full max-w-[1440px] mx-auto flex flex-col md:flex-row items-center justify-between z-10 gap-12">
         {/* Left Column: Typography */}
         <div className="flex-1 flex flex-col justify-center items-start text-left max-w-2xl">
-          <p className="text-white font-extrabold tracking-[0.15em] text-3xl md:text-4xl uppercase mb-4" style={{ fontFamily: 'var(--font-greeting)' }}>
+          <p className="text-white font-light tracking-[0.15em] text-3xl md:text-4xl uppercase mb-4" style={{ fontFamily: 'var(--font-greeting)' }}>
             HEY THERE !!!
           </p>
 
@@ -64,7 +64,7 @@ export default function HeroSection() {
 
         {/* Right Column: 3D Scene */}
         {!isMobile && (
-          <div className="flex-1 w-full flex justify-center md:justify-end items-center h-[400px] md:h-[550px] relative">
+          <div className="flex-1 w-full flex justify-center md:justify-end items-center h-[400px] md:h-[550px] relative translate-y-6 md:translate-y-12">
             <div ref={splineRef} className="w-full h-full rounded-[24px] overflow-hidden relative shadow-2xl bg-white/5 backdrop-blur-sm border border-black/10 z-10 flex items-center justify-center">
               {splineDimensions.width > 0 && splineDimensions.height > 0 && (
                 <>

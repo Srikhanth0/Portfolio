@@ -34,7 +34,7 @@ const CtaCard = React.forwardRef<HTMLDivElement, CtaCardProps>(
               src={imageSrc}
               alt={imageAlt}
               fill
-              className="object-cover"
+              className="object-contain p-4 md:p-8"
               sizes="(max-width: 768px) 100%, 33vw"
             />
           </div>
