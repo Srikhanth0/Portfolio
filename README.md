@@ -1,5 +1,5 @@
 <div align="center">
-  < alt="Srikhanth Portfolio" width="100%" />
+  
 
   # Srikhanth —  Portfolio
   
