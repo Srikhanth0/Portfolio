@@ -34,8 +34,8 @@ const CtaCard = React.forwardRef<HTMLDivElement, CtaCardProps>(
               src={imageSrc}
               alt={imageAlt}
               fill
-              className="object-contain"
-              sizes="(max-width: 768px) 100%, 33vw"
+              className="object-contain scale-[1.25] md:scale-[1.35] transition-transform duration-500 hover:scale-[1.4]"
+              sizes="(max-width: 768px) 100%, 40vw"
             />
           </div>
         </div>
