@@ -28,8 +28,8 @@ const CtaCard = React.forwardRef<HTMLDivElement, CtaCardProps>(
         {...props}
       >
         {/* Image Section - enlarged to fill container */}
-        <div className="md:w-2/5 w-full flex items-center justify-center bg-white/5 p-4">
-          <div className="relative w-full h-48 md:h-full md:min-h-[250px] overflow-hidden">
+        <div className="md:w-2/5 w-full flex items-center justify-center bg-white/5 p-2 md:p-4">
+          <div className="relative w-full h-64 md:h-full md:min-h-[320px] overflow-hidden">
             <Image
               src={imageSrc}
               alt={imageAlt}
