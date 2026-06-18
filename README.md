@@ -1,9 +1,9 @@
 <div align="center">
-  <img src="public/projects/ORION_AGENT.webp" alt="Srikhanth Portfolio" width="100%" />
+  < alt="Srikhanth Portfolio" width="100%" />
 
-  # 🚀 Srikhanth — AI & Data Science Portfolio
+  # Srikhanth —  Portfolio
   
-  **B.Tech AI & DS Undergraduate | AI/ML Developer | GSoC Aspirant**
+  **B.Tech AI & DS Undergraduate | GSoC Aspirant**
   
   [![Next.js](https://img.shields.io/badge/Next.js-15-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
   [![React](https://img.shields.io/badge/React-19-blue?style=for-the-badge&logo=react)](https://reactjs.org/)
