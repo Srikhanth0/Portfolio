@@ -1,10 +1,11 @@
 "use client";
 
-import TextPressure from "@/components/ui/TextPressure";
+import ShinyText from "@/components/ui/ShinyText";
 import SideRays from "@/components/ui/SideRays";
 import { useDevice } from "@/hooks/useDevice";
 import { useDimensions } from "@/hooks/useDimensions";
 import Script from "next/script";
+import { SITE_CONSTANTS } from "@/data/constants";
 
 export default function HeroSection() {
   const { isMobile } = useDevice();
@@ -37,18 +38,18 @@ export default function HeroSection() {
 
           <h1 className="text-white leading-[0.9] m-0 mb-6 uppercase" style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(3.5rem, 8vw, 6rem)', fontWeight: 900 }}>
             <span className="block mb-[-0.1em]">I'M</span>
-            <div style={{ position: 'relative', height: '180px', width: '100%', maxWidth: '700px' }} className="mt-2 mb-8">
-              <TextPressure
-                text="SRIKHANTH,"
-                flex={true}
-                alpha={false}
-                stroke={false}
-                width={true}
-                weight={true}
-                italic={true}
-                textColor="#ffffff"
-                strokeColor="#ff0000"
-                minFontSize={140}
+            <div className="relative w-full max-w-[700px] h-[70px] sm:h-[100px] md:h-[180px] mt-2 mb-4 md:mb-8 flex items-center justify-start overflow-visible">
+              <ShinyText
+                text="SRIKHANTH"
+                speed={2.5}
+                delay={0}
+                color="#b5b5b5"
+                shineColor="#ffffff"
+                spread={120}
+                direction="left"
+                yoyo={false}
+                pauseOnHover={false}
+                className="text-[60px] sm:text-[90px] md:text-[140px] leading-none"
               />
             </div>
           </h1>
@@ -57,7 +58,7 @@ export default function HeroSection() {
             B.Tech AI & DS Undergraduate @ SREC | Intercollege Hackathon Winner | AI/ML Developer | Intern @ Rasa.ai & Betasoft | Open Source Contributor | GSoC Aspirant | 2025-2026 SREC Symposium President
           </p>
 
-          <a href="https://drive.google.com/file/d/1TFBF7DP7bU6AEZTz8XFroceUmkIJMX65/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="bg-white text-[#121212] rounded-full px-8 py-3.5 font-bold uppercase tracking-wider text-sm md:text-base hover:bg-gray-200 hover:scale-105 transition-all duration-300 inline-block">
+          <a href={SITE_CONSTANTS.resumeUrl} target="_blank" rel="noopener noreferrer" className="bg-white text-[#121212] rounded-full px-8 py-3.5 font-bold uppercase tracking-wider text-sm md:text-base hover:bg-gray-200 hover:scale-105 transition-all duration-300 inline-block">
             RESUME
           </a>
         </div>

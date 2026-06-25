@@ -1,12 +1,14 @@
 import dynamic from "next/dynamic";
 import HeroSection from "@/components/sections/Hero";
 
-const AboutSection = dynamic(() => import("@/components/sections/About"));
-const ExperienceSection = dynamic(() => import("@/components/sections/Experience"));
-const ProjectsSection = dynamic(() => import("@/components/sections/Projects"));
-const SkillsSection = dynamic(() => import("@/components/sections/Skills"));
-const CertificatesSection = dynamic(() => import("@/components/sections/Certificates"));
-const ContactSection = dynamic(() => import("@/components/sections/Contact"));
+const loadingFallback = () => <div className="min-h-[50vh] w-full animate-pulse bg-[#121212]/50" />;
+
+const AboutSection = dynamic(() => import("@/components/sections/About"), { loading: loadingFallback });
+const ExperienceSection = dynamic(() => import("@/components/sections/Experience"), { loading: loadingFallback });
+const ProjectsSection = dynamic(() => import("@/components/sections/Projects"), { loading: loadingFallback });
+const SkillsSection = dynamic(() => import("@/components/sections/Skills"), { loading: loadingFallback });
+const CertificatesSection = dynamic(() => import("@/components/sections/Certificates"), { loading: loadingFallback });
+const ContactSection = dynamic(() => import("@/components/sections/Contact"), { loading: loadingFallback });
 
 export default function Home() {
   return (

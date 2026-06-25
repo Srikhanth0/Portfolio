@@ -2,6 +2,7 @@
 
 import GlassProfileCard from "@/components/ui/glassmorphism-profile-card";
 import StackedArticleCards from "@/components/ui/stacked-article-cards";
+import { SITE_CONSTANTS } from "@/data/constants";
 
 export default function ContactSection() {
   return (
@@ -15,9 +16,9 @@ export default function ContactSection() {
         {/* Left Column: Glassmorphism Profile */}
         <div className="w-full flex justify-center lg:justify-start">
           <GlassProfileCard
-            name="SRIKHANTH"
-            role="B.Tech AI & DS Undergraduate @ SREC | Intercollege Hackathon Winner | Intern @ Rasa.ai & Betasoft | Open Source Contributor | GSoC Aspirant"
-            email="srikhanth.m0@gmail.com"
+            name={SITE_CONSTANTS.name}
+            role={SITE_CONSTANTS.role}
+            email={SITE_CONSTANTS.email}
             avatarSrc="/FOOTER/Srikhanth.webp"
             statusText="Available for work"
             statusColor="bg-purple-500"

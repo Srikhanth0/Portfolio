@@ -8,45 +8,7 @@ import { ChevronLeft, ChevronRight, ExternalLink } from "lucide-react";
 import { FaGithub as Github } from "react-icons/fa";
 import { cn } from "@/lib/utils";
 
-interface Project {
-  name: string;
-  title: string;
-  description: string;
-  imageUrl: string;
-  githubUrl?: string;
-  liveUrl?: string;
-  status?: string;
-}
-
-const projects: Project[] = [
-  {
-    name: "MedBot AI",
-    title: "Medical Assistant LLM",
-    description:
-      "An AI-powered healthcare assistant built using Gemini APIs and Retrieval-Augmented Generation (RAG). Features intelligent medical information retrieval, prescription understanding, contextual healthcare guidance, and an interactive user experience designed to improve accessibility and healthcare support.",
-    imageUrl: "/projects/MEDBOT.webp",
-    githubUrl: "https://github.com/Srikhanth0/Medbot-AI-Health-Assistant",
-    liveUrl: "https://health-assitant.netlify.app/",
-  },
-  {
-    name: "Orion Agent",
-    title: "Multi-Agent Windows Assistant",
-    description:
-      "Orion is a visually-aware multi-agent Windows assistant built on LangGraph. It utilizes a Sensory-Motor Loop architecture combining Vision LLMs and the Model Context Protocol (MCP) to dynamically understand screen context, map coordinates, execute workflows, and perform self-correcting task execution.",
-    imageUrl: "/projects/ORION_AGENT.webp",
-    githubUrl: "https://github.com/Srikhanth0/Orion_Agent.git",
-    status: "Currently under active research and development. Version 1 use cases and validation studies have been successfully completed.",
-  },
-  {
-    name: "LUMA Voice Assistant",
-    title: "AI Accessibility Assistant",
-    description:
-      "An AI-powered accessibility assistant designed for visually impaired users. Combines OCR capabilities, voice interaction, and intelligent assistance to improve digital accessibility and user independence.",
-    imageUrl: "/projects/LUMA_AI.webp",
-    githubUrl: "https://github.com/Srikhanth0/Luma-AI.git",
-    status: "Currently in development with future enhancement phases planned.",
-  },
-];
+import { projectsData } from "@/data/projects";
 
 export interface TestimonialCarouselProps {
   className?: string;
@@ -56,13 +18,13 @@ export function TestimonialCarousel({ className }: TestimonialCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const handleNext = () =>
-    setCurrentIndex((index) => (index + 1) % projects.length);
+    setCurrentIndex((index) => (index + 1) % projectsData.length);
   const handlePrevious = () =>
     setCurrentIndex(
-      (index) => (index - 1 + projects.length) % projects.length
+      (index) => (index - 1 + projectsData.length) % projectsData.length
     );
 
-  const currentProject = projects[currentIndex];
+  const currentProject = projectsData[currentIndex];
 
   return (
     <div className={cn("w-full max-w-5xl mx-auto px-4", className)}>
@@ -72,7 +34,7 @@ export function TestimonialCarousel({ className }: TestimonialCarouselProps) {
         <div className='w-[470px] h-[470px] rounded-3xl overflow-hidden bg-gray-200 dark:bg-neutral-800 flex-shrink-0'>
           <AnimatePresence mode='wait'>
             <motion.div
-              key={currentProject.imageUrl}
+              key={currentProject.imageSrc}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -80,8 +42,8 @@ export function TestimonialCarousel({ className }: TestimonialCarouselProps) {
               className='w-full h-full'
             >
               <Image
-                src={currentProject.imageUrl}
-                alt={currentProject.name}
+                src={currentProject.imageSrc}
+                alt={currentProject.title}
                 width={470}
                 height={470}
                 className='w-full h-full object-cover'
@@ -95,7 +57,7 @@ export function TestimonialCarousel({ className }: TestimonialCarouselProps) {
         <div className='bg-[#1A1A1A] border border-white/10 rounded-3xl shadow-2xl p-8 ml-[-80px] z-10 max-w-xl flex-1'>
           <AnimatePresence mode='wait'>
             <motion.div
-              key={currentProject.name}
+              key={currentProject.title}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -103,10 +65,10 @@ export function TestimonialCarousel({ className }: TestimonialCarouselProps) {
             >
               <div className='mb-6'>
                 <h2 className='text-2xl font-normal text-white mb-2'>
-                  {currentProject.name}
+                  {currentProject.title}
                 </h2>
                 <p className='text-base font-light text-purple-400'>
-                  {currentProject.title}
+                  {currentProject.subtitle}
                 </p>
               </div>
 
@@ -157,7 +119,7 @@ export function TestimonialCarousel({ className }: TestimonialCarouselProps) {
         <div className='w-full aspect-square bg-gray-200 dark:bg-gray-700 rounded-3xl overflow-hidden mb-6'>
           <AnimatePresence mode='wait'>
             <motion.div
-              key={currentProject.imageUrl}
+              key={currentProject.imageSrc}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -165,8 +127,8 @@ export function TestimonialCarousel({ className }: TestimonialCarouselProps) {
               className='w-full h-full'
             >
               <Image
-                src={currentProject.imageUrl}
-                alt={currentProject.name}
+                src={currentProject.imageSrc}
+                alt={currentProject.title}
                 width={400}
                 height={400}
                 className='w-full h-full object-cover'
@@ -180,18 +142,18 @@ export function TestimonialCarousel({ className }: TestimonialCarouselProps) {
         <div className='px-4'>
           <AnimatePresence mode='wait'>
             <motion.div
-              key={currentProject.name}
+              key={currentProject.title}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.4, ease: "easeInOut" }}
             >
               <h2 className='text-xl font-normal text-white mb-2'>
-                {currentProject.name}
+                {currentProject.title}
               </h2>
                 
               <p className='text-base font-light text-purple-400 mb-4'>
-                {currentProject.title}
+                {currentProject.subtitle}
               </p>
                 
               <p className='text-white text-lg leading-relaxed mb-4 line-clamp-5'>
@@ -248,7 +210,7 @@ export function TestimonialCarousel({ className }: TestimonialCarouselProps) {
 
         {/* Dots */}
         <div className='flex gap-2'>
-          {projects.map((_, projectIndex) => (
+          {projectsData.map((_, projectIndex) => (
             <button
               key={projectIndex}
               onClick={() => setCurrentIndex(projectIndex)}

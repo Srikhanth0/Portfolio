@@ -8,36 +8,42 @@ const barlowCondensed = Barlow_Condensed({
   weight: ["600", "700", "800", "900"],
   subsets: ["latin"],
   variable: "--font-barlow-condensed",
+  preload: false,
 });
 
 const spaceGrotesk = Space_Grotesk({ 
   weight: ["300", "400", "600"],
   subsets: ["latin"],
   variable: "--font-space-grotesk",
+  preload: false,
 });
 
 const ibmPlexMono = IBM_Plex_Mono({ 
   weight: ["400", "600", "700"],
   subsets: ["latin"],
   variable: "--font-ibm-plex-mono",
+  preload: false,
 });
 
 const rajdhani = Rajdhani({ 
   weight: ["300", "500", "700"],
   subsets: ["latin"],
   variable: "--font-rajdhani",
+  preload: false,
 });
 
 const bebasNeue = Bebas_Neue({ 
   weight: ["400"],
   subsets: ["latin"],
   variable: "--font-bebas-neue",
+  preload: false,
 });
 
 const manrope = Manrope({
   weight: ["200", "300", "400", "500", "600", "700", "800"],
   subsets: ["latin"],
   variable: "--font-manrope",
+  preload: false,
 });
 
 export const metadata: Metadata = {
@@ -79,29 +85,32 @@ export default function RootLayout({
 }>) {
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": ["Person", "ProfilePage"],
-    name: "Srikhanth",
-    jobTitle: "AI & DS Engineer",
-    url: "https://srikhanth.dev",
-    sameAs: [
-      "https://www.linkedin.com/in/srikhanth-m",
-      "https://github.com/Srikhanth0",
-      "https://leetcode.com/u/srikhanth"
-    ],
-    alumniOf: {
-      "@type": "CollegeOrUniversity",
-      name: "SREC"
-    },
-    worksFor: [
-      {
-        "@type": "Organization",
-        name: "Rasa.ai"
+    "@type": "ProfilePage",
+    "mainEntity": {
+      "@type": "Person",
+      name: "Srikhanth",
+      jobTitle: "AI & DS Engineer",
+      url: "https://srikhanth.dev",
+      sameAs: [
+        "https://www.linkedin.com/in/srikhanth-m",
+        "https://github.com/Srikhanth0",
+        "https://leetcode.com/u/srikhanth"
+      ],
+      alumniOf: {
+        "@type": "CollegeOrUniversity",
+        name: "SREC"
       },
-      {
-        "@type": "Organization",
-        name: "Betasoft"
-      }
-    ]
+      worksFor: [
+        {
+          "@type": "Organization",
+          name: "Rasa.ai"
+        },
+        {
+          "@type": "Organization",
+          name: "Betasoft"
+        }
+      ]
+    }
   };
 
   return (

@@ -7,6 +7,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { Plus, Copy, Zap, Check } from "lucide-react";
+import { SITE_CONSTANTS } from "@/data/constants";
 
 interface ComponentProps {
   name?: string;
@@ -20,9 +21,9 @@ interface ComponentProps {
 }
 
 export default function Component({
-  name = "Srikhanth",
-  role = "AI & DS Engineer",
-  email = "srikhanth.m0@gmail.com",
+  name = SITE_CONSTANTS.name,
+  role = SITE_CONSTANTS.role,
+  email = SITE_CONSTANTS.email,
   avatarSrc = "/FOOTER/Srikhanth.webp",
   statusText = "Available for work",
   statusColor = "bg-white",
@@ -41,7 +42,7 @@ export default function Component({
   };
 
   const handleHireMe = () => {
-    window.open("https://www.linkedin.com/in/srikhanth-m", "_blank", "noopener,noreferrer");
+    window.open(SITE_CONSTANTS.socials.linkedin, "_blank", "noopener,noreferrer");
   };
 
   return (

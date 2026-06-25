@@ -1,4 +1,6 @@
-export const certificatesData = [
+import { Certificate } from "@/types";
+
+export const certificatesData: Certificate[] = [
   {
     id: 1,
     title: "AWS Academy Graduate — Cloud Foundations",
@@ -27,7 +29,7 @@ export const certificatesData = [
     id: 4,
     title: "Spring REST",
     issuer: "Spring",
-    imageSrc: "/certificate/Spring rest.webp",
+    imageSrc: "/certificate/Spring_rest.webp",
     href: "#",
     tag: "Backend"
   },
@@ -35,7 +37,7 @@ export const certificatesData = [
     id: 5,
     title: "Spring 5 Basics",
     issuer: "Spring",
-    imageSrc: "/certificate/Spring 5 basics.webp",
+    imageSrc: "/certificate/Spring_5_basics.webp",
     href: "#",
     tag: "Backend"
   }

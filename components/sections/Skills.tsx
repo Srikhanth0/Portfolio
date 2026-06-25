@@ -79,7 +79,7 @@ const timelineData = [
     date: "Cloud & AI",
     content: "Leveraging Google Cloud Platform for AI/ML services, Vertex AI, and cloud infrastructure management.",
     category: "Cloud",
-    iconSrc: "/skills-logo/Google Cloud.svg",
+    iconSrc: "/skills-logo/Google_Cloud.svg",
     relatedIds: [1, 5, 6],
     status: "completed" as const,
     energy: 82,

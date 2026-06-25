@@ -11,26 +11,10 @@ import React from 'react'
  * @website: https://emerald-ui.com
  */
 import { MouseEventHandler, useState } from 'react'
-import { clsx } from 'clsx'
-import { twMerge } from 'tailwind-merge'
 import Image from 'next/image'
-function cn(...inputs: any[]) { return twMerge(clsx(inputs)) }
-
-const Button = React.forwardRef<HTMLButtonElement, React.ButtonHTMLAttributes<HTMLButtonElement> & { variant?: string; size?: string }>(
-  ({ className, variant, size, ...props }, ref) => (
-    <button ref={ref} className={cn(
-      "inline-flex items-center justify-center rounded-md text-base font-light transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
-      variant === "outline" ? "border border-input bg-background hover:bg-accent hover:text-accent-foreground" :
-      variant === "ghost" ? "hover:bg-accent hover:text-accent-foreground" :
-      variant === "link" ? "text-primary underline-offset-4 hover:underline" :
-      variant === "secondary" ? "bg-white/10 text-white hover:bg-white/20 border border-white/10" :
-      "bg-primary text-primary-foreground hover:bg-primary/90",
-      size === "sm" ? "h-9 px-3" : size === "lg" ? "h-11 px-8" : size === "icon" ? "h-10 w-10" : "h-10 px-4 py-2",
-      className
-    )} {...props} />
-  )
-);
-Button.displayName = "Button";
+import { cn } from '@/lib/utils'
+import { Button } from '@/components/ui/button'
+import { SITE_CONSTANTS } from '@/data/constants'
 
 interface ArticleItem {
   url: string
@@ -41,22 +25,22 @@ interface ArticleItem {
 
 const DefaultArticleItems: ArticleItem[] = [
   {
-    url: 'https://www.linkedin.com/in/srikhanth-m',
-    title: 'LinkedIn',
-    subTitle: 'LinkedIn — Let\'s connect professionally',
-    iconSrc: '/linkedin-svgrepo-com.svg',
+    url: SITE_CONSTANTS.socials.leetcode,
+    title: 'LeetCode',
+    subTitle: 'LeetCode — Problem solving & DSA',
+    iconSrc: '/leetcode-svgrepo-com.svg',
   },
   {
-    url: 'https://github.com/Srikhanth0',
+    url: SITE_CONSTANTS.socials.github,
     title: 'GitHub',
     subTitle: 'GitHub — Explore my open source projects',
     iconSrc: '/github-142-svgrepo-com.svg',
   },
   {
-    url: 'https://leetcode.com/u/srikhanth',
-    title: 'LeetCode',
-    subTitle: 'LeetCode — Problem solving & DSA',
-    iconSrc: '/leetcode-svgrepo-com.svg',
+    url: SITE_CONSTANTS.socials.linkedin,
+    title: 'LinkedIn',
+    subTitle: 'LinkedIn — Let\'s connect professionally',
+    iconSrc: '/linkedin-svgrepo-com.svg',
   },
 ]
 

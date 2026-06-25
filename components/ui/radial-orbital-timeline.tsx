@@ -1,4 +1,20 @@
 "use client";
+/**
+ * RadialOrbitalTimeline Component
+ * 
+ * @description Renders an interactive, 3D-like orbital timeline of events or skills.
+ * 
+ * Architecture & Performance:
+ * - Uses requestAnimationFrame for performant continuous rotation instead of setInterval, syncing with the display refresh rate.
+ * - Hardware-accelerated CSS transforms (translate, rotate) for node positioning to prevent layout thrashing.
+ * 
+ * @interviewNotes 
+ * Q: Why use requestAnimationFrame over setInterval for the rotation?
+ * A: requestAnimationFrame guarantees the callback runs before the next repaint, ensuring smoother animations. It also automatically pauses when the browser tab is inactive, saving CPU and battery life.
+ * 
+ * Q: What is the complexity of calculateNodePosition?
+ * A: O(1) time complexity per node. It calculates Cartesian coordinates from Polar angles using Math.cos and Math.sin, which are constant time operations.
+ */
 import { useState, useEffect, useRef } from "react";
 import { ArrowRight, Link, Zap } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
@@ -89,21 +105,24 @@ export default function RadialOrbitalTimeline({
 
   useEffect(() => {
     setIsMounted(true);
-    let rotationTimer: NodeJS.Timeout;
+    let animationFrameId: number;
+    let lastTime = performance.now();
 
-    if (autoRotate && viewMode === "orbital") {
-      rotationTimer = setInterval(() => {
-        setRotationAngle((prev) => {
-          const newAngle = (prev + 0.3) % 360;
-          return Number(newAngle.toFixed(3));
-        });
-      }, 50);
-    }
+    const animate = (time: number) => {
+      if (autoRotate && viewMode === "orbital") {
+        const deltaTime = time - lastTime;
+        if (deltaTime >= 50) {
+          setRotationAngle((prev) => Number(((prev + 0.3) % 360).toFixed(3)));
+          lastTime = time;
+        }
+      }
+      animationFrameId = requestAnimationFrame(animate);
+    };
+
+    animationFrameId = requestAnimationFrame(animate);
 
     return () => {
-      if (rotationTimer) {
-        clearInterval(rotationTimer);
-      }
+      cancelAnimationFrame(animationFrameId);
     };
   }, [autoRotate, viewMode]);
 
@@ -215,6 +234,17 @@ export default function RadialOrbitalTimeline({
                 ref={(el) => { nodeRefs.current[item.id] = el; }}
                 className="absolute transition-all duration-700 cursor-pointer"
                 style={nodeStyle}
+                role="button"
+                tabIndex={0}
+                aria-label={`View details for ${item.title}`}
+                aria-expanded={isExpanded}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    toggleItem(item.id);
+                  }
+                }}
                 onClick={(e) => {
                   e.stopPropagation();
                   toggleItem(item.id);
